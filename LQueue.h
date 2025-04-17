@@ -4,15 +4,18 @@
 template<class T>
 class LQueue {
 private:
+    //Struct to represent the node and its data
     struct Node {
         T data;
         Node* next;
 
         Node(const int data, Node* next) : data(data), next(next) {}
     };
+
     Node* head;
     Node* tail;
     int queueSize;
+
 public:
     LQueue() : head(nullptr), tail(nullptr), queueSize(0) {}
     ~LQueue(){
@@ -21,6 +24,7 @@ public:
         }
     }
 
+    //Adds a new element to the front of the queue
     void push(T data){
         Node* newNode = new Node(data, nullptr);
         if (tail == nullptr) {
@@ -32,6 +36,7 @@ public:
         queueSize++;
     }
 
+    //Removes the element at the front of the queue and returns its data
     T pop() {
         if (head == nullptr) {
             return T();
@@ -47,6 +52,7 @@ public:
         return data;
     }
 
+    //Returns the element at the front of the queue
     T front() {
         if (head == nullptr) {
             return T();
@@ -54,21 +60,24 @@ public:
         return head->data;
     }
 
+    //Returns the size of the queue
     int size() const {
         return queueSize;
     }
 
+    //Returns if the queue is empty or not
     bool empty() const {
         return queueSize == 0;
     }
 
+    //Moves the front element to the end of the queue
     void move_to_rear() {
         T data = front();
         pop();
         push(data);
     }
 
-    //Question 2
+    //Question 2, Starter method for the recursive call
     int linear_search(T data) {
         Node* curr = head;
         Node* target = new Node(data, nullptr);
@@ -77,7 +86,7 @@ public:
         return lastPos;
     }
 
-    //Question 2
+    //Question 2, Searches through the queue
     int linear_search(Node* currNode, Node* target, size_t index, size_t& lastPos) {
         if (currNode == nullptr) {
             return -1;
@@ -88,7 +97,7 @@ public:
         return linear_search(currNode->next, target, index + 1, lastPos);
     }
 
-    //Question 3
+    //Question 3, Sorts the queue from low to high
     void insertion_sort() {
         if (head == nullptr || head->next == nullptr) {
             return;
@@ -116,6 +125,7 @@ public:
         head = sorted;
     }
 
+    //Prints out the queue
     void print() {
         Node* curr = head;
         while (curr != nullptr) {

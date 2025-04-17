@@ -11,9 +11,9 @@ The second output in the program, it outputs the Queue by popping them. Halfway 
 ### Question 2
 #### Output
 ```
-    Last Index of 3: 9
-    Last Index of 7: 6
-    Last Index of 11: -1
+Last Index of 3: 9
+Last Index of 7: 6
+Last Index of 11: -1
 ```
 
 The output here gets the index of two numbers in the queue and one number not in the queue.
